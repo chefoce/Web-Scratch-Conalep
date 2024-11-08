@@ -78,7 +78,7 @@ const ProjectPage = () => {
 
     if (likeDoc.exists()) {
       const lastLikeTime = likeDoc.data().timestamp.toMillis();
-      if (now - lastLikeTime < 15 * 60 * 1000) {
+      if (now - lastLikeTime < 3 * 60 * 1000) {
         alert("Solo puedes dar like una vez cada 15 minutos.");
         return;
       }

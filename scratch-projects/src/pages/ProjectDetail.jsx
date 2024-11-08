@@ -140,7 +140,7 @@ function ProjectDetail() {
 
     if (likeDoc.exists()) {
       const lastLikeTime = likeDoc.data().timestamp.toMillis();
-      if (now - lastLikeTime < 15 * 60 * 1000) {
+      if (now - lastLikeTime < 3 * 60 * 1000) {
         setCanLike(false);
         return;
       }
