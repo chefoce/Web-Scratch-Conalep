@@ -136,14 +136,10 @@ function ProjectDetail() {
     const likeDocRef = doc(db, "likes", `project_${id}_user_${getUserId()}`);
     const likeDoc = await getDoc(likeDocRef);
 
-    const now = Date.now();
-
     if (likeDoc.exists()) {
-      const lastLikeTime = likeDoc.data().timestamp.toMillis();
-      if (now - lastLikeTime < 15 * 60 * 1000) {
-        setCanLike(false);
-        return;
-      }
+      setCanLike(false);
+      alert("Ya has dado like a este proyecto.");
+      return;
     }
 
     await setDoc(likeDocRef, {
@@ -169,14 +165,7 @@ function ProjectDetail() {
     const likeDoc = await getDoc(likeDocRef);
 
     if (likeDoc.exists()) {
-      const lastLikeTime = likeDoc.data().timestamp.toMillis();
-      const now = Date.now();
-
-      if (now - lastLikeTime < 15 * 60 * 1000) {
-        setCanLike(false);
-      } else {
-        setCanLike(true);
-      }
+      setCanLike(false);
     } else {
       setCanLike(true);
     }
@@ -237,7 +226,7 @@ function ProjectDetail() {
             disabled={!canLike}
           >
             <FaHeart className="mr-3 w-6 h-6" />
-            Like
+            {canLike ? "Like" : "Ya has dado like"}
           </button>
           <span className="text-2xl">Likes: {likesCount}</span>
         </div>

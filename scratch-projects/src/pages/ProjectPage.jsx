@@ -1,4 +1,3 @@
-// src/pages/ProjectPage.jsx
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProjectInfo } from "../api/scratch";
@@ -71,17 +70,12 @@ const ProjectPage = () => {
   };
 
   const handleLike = async () => {
-    const likeDocRef = doc(db, "likes", `project_${id}_user_${getUserId()}`); // getUserId() puede ser una función que genere un ID único por usuario (por ejemplo, usando la IP o un identificador anónimo)
+    const likeDocRef = doc(db, "likes", `project_${id}_user_${getUserId()}`);
     const likeDoc = await getDoc(likeDocRef);
 
-    const now = Date.now();
-
     if (likeDoc.exists()) {
-      const lastLikeTime = likeDoc.data().timestamp.toMillis();
-      if (now - lastLikeTime < 15 * 60 * 1000) {
-        alert("Solo puedes dar like una vez cada 15 minutos.");
-        return;
-      }
+      alert("Ya has dado like a este proyecto.");
+      return;
     }
 
     await setDoc(likeDocRef, {
@@ -91,6 +85,9 @@ const ProjectPage = () => {
     // Actualizar el conteo de likes en Firestore
     const projectDocRef = doc(db, "projects", id);
     await setDoc(projectDocRef, { likes: increment(1) }, { merge: true });
+
+    // Actualizar el estado de likesCount
+    setLikesCount((prevCount) => prevCount + 1);
   };
 
   const handleReportComment = async (commentId) => {
@@ -119,7 +116,6 @@ const ProjectPage = () => {
       <p>Descripción: {project.description}</p>
       <iframe
         src={`https://scratch.mit.edu/projects/${id}/embed`}
-        allowtransparency="true"
         width="485"
         height="402"
         frameBorder="0"
@@ -134,12 +130,9 @@ const ProjectPage = () => {
           className="rgb-button text-white font-bold py-4 px-8 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-110"
           onClick={handleLike}
         >
-          {" "}
           Like
         </button>
-        <span className="ml-2">
-          {/* Mostrar número de likes desde Firebase */}
-        </span>
+        <span className="ml-2">Likes: {likesCount}</span>
       </div>
 
       {/* Sección de Comentarios */}
