@@ -1,3 +1,4 @@
+// src/pages/ProjectPage.jsx
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProjectInfo } from "../api/scratch";
@@ -13,7 +14,11 @@ import {
   setDoc,
   getDoc,
   increment,
+  updateDoc,
 } from "firebase/firestore";
+
+// Importamos las funciones de cookies
+import { setCookie, getCookie } from "../utils/cookies";
 
 const ProjectPage = () => {
   const { id } = useParams();
@@ -21,11 +26,12 @@ const ProjectPage = () => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const [likesCount, setLikesCount] = useState(0);
+
   const getUserId = () => {
-    let userId = localStorage.getItem("userId");
+    let userId = getCookie("userId");
     if (!userId) {
       userId = `anon_${Date.now()}_${Math.random()}`;
-      localStorage.setItem("userId", userId);
+      setCookie("userId", userId, 365); // La cookie expirará en 365 días
     }
     return userId;
   };
@@ -42,6 +48,10 @@ const ProjectPage = () => {
 
       if (projectDoc.exists()) {
         setLikesCount(projectDoc.data().likes || 0);
+      } else {
+        // Si el documento no existe, crearlo con likes = 0
+        await setDoc(projectDocRef, { likes: 0 });
+        setLikesCount(0);
       }
     };
 
@@ -55,11 +65,15 @@ const ProjectPage = () => {
       where("hidden", "!=", true)
     );
     const querySnapshot = await getDocs(q);
-    const commentsData = querySnapshot.docs.map((doc) => doc.data());
+    const commentsData = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
     setComments(commentsData);
   };
 
   const handleAddComment = async () => {
+    if (newComment.trim() === "") return;
     await addDoc(collection(db, "comments"), {
       projectId: id,
       text: newComment,
@@ -154,8 +168,8 @@ const ProjectPage = () => {
           </button>
         </div>
         <ul>
-          {comments.map((comment, index) => (
-            <li key={index} className="border-b py-2">
+          {comments.map((comment) => (
+            <li key={comment.id} className="border-b py-2">
               {comment.text}
               <button
                 onClick={() => handleReportComment(comment.id)}

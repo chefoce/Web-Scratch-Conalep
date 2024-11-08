@@ -1,3 +1,4 @@
+// src/pages/ProjectDetail.jsx
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import projects from "../data/projects";
@@ -22,6 +23,9 @@ import { FaHeart } from "react-icons/fa";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
 
+// Importamos las funciones de cookies
+import { setCookie, getCookie } from "../utils/cookies";
+
 function ProjectDetail() {
   const { id } = useParams();
   const [project, setProject] = useState(null);
@@ -35,10 +39,10 @@ function ProjectDetail() {
   const [hasMoreComments, setHasMoreComments] = useState(true);
 
   const getUserId = () => {
-    let userId = localStorage.getItem("userId");
+    let userId = getCookie("userId");
     if (!userId) {
       userId = `anon_${Date.now()}_${Math.random()}`;
-      localStorage.setItem("userId", userId);
+      setCookie("userId", userId, 365); // La cookie expirará en 365 días
     }
     return userId;
   };
@@ -152,7 +156,7 @@ function ProjectDetail() {
     });
 
     setCanLike(false);
-    fetchLikes();
+    setLikesCount((prevCount) => prevCount + 1); // Actualizar el conteo localmente
     setShowConfetti(true);
     // Ocultar confeti después de 5 segundos
     setTimeout(() => {
