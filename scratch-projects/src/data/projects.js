@@ -1,7 +1,7 @@
 const projects = [
   {
     id: "1089524445",
-    title: "Emisión de Rayos",
+    title: "Emisión de Rayos / Grupo 304",
     author: "Giovany Rivera",
     description: "Un juego de laberinto en 3D",
     instructions:
@@ -11,7 +11,7 @@ const projects = [
   },
   {
     id: "1093169210",
-    title: "Plantas vs. Zombis",
+    title: "Plantas vs. Zombis / Grupo 304",
     author: "Miguel Ángel Andrade López",
     description:
       "Ataca a los zombis con tus plantas y no dejes que lleguen a tu casa.",
@@ -21,7 +21,7 @@ const projects = [
   },
   {
     id: "1085895669",
-    title: "DK by TAO",
+    title: "DK by TAO / Grupo 304",
     author: "Tadeo Albarrán",
     description: "Intento del juego de Donkey Kong.",
     instructions:
@@ -31,7 +31,7 @@ const projects = [
   },
   {
     id: "1089980717",
-    title: "bUGS",
+    title: "bUGS / Grupo 304",
     author: "Jorge Carlos Rodriguez Viera",
     description: "Juego De Plataforma Sobre Un Cubo.",
     instructions:
@@ -41,7 +41,7 @@ const projects = [
   },
   {
     id: "1082886428",
-    title: "SPACE INVADERS",
+    title: "SPACE INVADERS / Grupo 304",
     author: "José Ángel Hernández Rubio",
     description: "Mata marcianos en 2D.",
     instructions:
@@ -51,7 +51,7 @@ const projects = [
   },
   {
     id: "1093100544",
-    title: "Flappy Birds",
+    title: "Flappy Birds / Grupo 304",
     author: "Luis Arturo Palomares Garcia",
     description:
       "Es un juego algo normal para pasar el tiempo un rato. Es fácil de jugar y fácil de entender.",
@@ -62,7 +62,7 @@ const projects = [
   },
   {
     id: "1093044919",
-    title: "GEOMETRY DASH LITE",
+    title: "GEOMETRY DASH LITE / Grupo 304",
     author: "Luis Humberto Diaz Rios",
     description: "Saltar para avanzar y ganar.",
     instructions:
@@ -72,7 +72,7 @@ const projects = [
   },
   {
     id: "1093170554",
-    title: "OP Mugen V Conalep",
+    title: "OP Mugen V Conalep / Grupo 304",
     author: "Gibran Ley Bustamante",
     description:
       "Basado en One piece Gigant Colloseum by epicduck12 y One Piece Mugen Fight game.",
@@ -83,8 +83,8 @@ const projects = [
   },
   {
     id: "1093266801",
-    title: "dbfz Conalep",
-    author: "Alain José Castillo Mexia",
+    title: "dbfz Conalep / Grupo 304",
+    author: "Alain José Castillo Mexia ",
     description:
       "Dragón ball fighterz Conalep edition es un fg basado en dos juegos originales de dragón ball z (dragón ball EB y dragón ball fighterz) donde encarnaremos la piel de los guerreros z para pelear en combates 1c1 para ver quien es el mas capo Bv.",
     instructions:
@@ -94,7 +94,7 @@ const projects = [
   },
   {
     id: "1081234431",
-    title: "T17",
+    title: "T17 / Grupo 304",
     author: "Marian Padilla",
     description: "Mini laberintos sencillos.",
     instructions:
@@ -104,7 +104,7 @@ const projects = [
   },
   {
     id: "1086995948",
-    title: "Geometry dash sud zero",
+    title: "Geometry dash sud zero / Grupo 304",
     author: "Edgar Barrón",
     description: "Geometry dash",
     instructions:
@@ -114,7 +114,7 @@ const projects = [
   },
   {
     id: "1093224144",
-    title: "ConaWarriors",
+    title: "ConaWarriors / Grupo 304",
     author: "Itzayana Ramos",
     description:
       "Juego de peleas basado en los antiguos juegos de Arcade como KOF 2002. En este juego serás un alumno del Conalep obligado a pelear contra otros alumnos los cuales tendrán habilidades especiales.",
@@ -125,7 +125,7 @@ const projects = [
   },
   {
     id: "925844548",
-    title: "Tank Defense",
+    title: "Tank Defense / Grupo 504",
     author: "Christian Paul Lizarraga Oronia",
     description: "Juego de disparos",
     instructions: "Click para iniciar.",
@@ -134,12 +134,32 @@ const projects = [
   },
   {
     id: "1093423657",
-    title: "Dragon Ball Legends Fighters",
+    title: "Dragon Ball Legends Fighters / Grupo 304",
     author: "Guillermo Alejandro Rojas Durán",
     description: "Juego de peleas en 2D de Dragon Ball",
     instructions:
       "Movimiento: p1 wasd, p2 flechas, ataques simples: p1 z x c, p2 i o p, recarga p1 r, p2 u, ataques de ki: p1 q f v p2 l k j",
     image: "https://uploads.scratch.mit.edu/projects/thumbnails/1093423657.png",
+    likes: 0,
+  },
+  {
+    id: "1093423657",
+    title: "Dragon Ball Legends Fighters / Grupo 304",
+    author: "Guillermo Alejandro Rojas Durán",
+    description: "Juego de peleas en 2D de Dragon Ball",
+    instructions:
+      "Movimiento: p1 wasd, p2 flechas, ataques simples: p1 z x c, p2 i o p, recarga p1 r, p2 u, ataques de ki: p1 q f v p2 l k j",
+    image: "https://uploads.scratch.mit.edu/projects/thumbnails/1093423657.png",
+    likes: 0,
+  },
+  {
+    id: "1066828722",
+    title: "Lemon's Attack",
+    author: "El Profe",
+    description: "Juego tipo space shooter con naves y limones.",
+    instructions:
+      "Movimiento: W A S D, Disparo: Click izquierdo. Destruye todos los limones.",
+    image: "https://uploads.scratch.mit.edu/projects/thumbnails/1066828722.png",
     likes: 0,
   },
 ];
