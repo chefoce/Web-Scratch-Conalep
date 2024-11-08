@@ -124,32 +124,22 @@ const projects = [
     likes: 0,
   },
   {
+    id: "1093423657",
+    title: "Dragon Ball Legends Fighters / Grupo 304",
+    author: "Guillermo Alejandro Rojas Durán",
+    description: "Juego de peleas en 2D de Dragon Ball",
+    instructions:
+      "Movimiento: p1 wasd, p2 flechas, ataques simples: p1 z x c, p2 i o p, recarga p1 r, p2 u, ataques de ki: p1 q f v p2 l k j",
+    image: "https://uploads.scratch.mit.edu/projects/thumbnails/1093423657.png",
+    likes: 0,
+  },
+  {
     id: "925844548",
     title: "Tank Defense / Grupo 504",
     author: "Christian Paul Lizarraga Oronia",
     description: "Juego de disparos",
     instructions: "Click para iniciar.",
     image: "https://uploads.scratch.mit.edu/projects/thumbnails/925844548.png",
-    likes: 0,
-  },
-  {
-    id: "1093423657",
-    title: "Dragon Ball Legends Fighters / Grupo 304",
-    author: "Guillermo Alejandro Rojas Durán",
-    description: "Juego de peleas en 2D de Dragon Ball",
-    instructions:
-      "Movimiento: p1 wasd, p2 flechas, ataques simples: p1 z x c, p2 i o p, recarga p1 r, p2 u, ataques de ki: p1 q f v p2 l k j",
-    image: "https://uploads.scratch.mit.edu/projects/thumbnails/1093423657.png",
-    likes: 0,
-  },
-  {
-    id: "1093423657",
-    title: "Dragon Ball Legends Fighters / Grupo 304",
-    author: "Guillermo Alejandro Rojas Durán",
-    description: "Juego de peleas en 2D de Dragon Ball",
-    instructions:
-      "Movimiento: p1 wasd, p2 flechas, ataques simples: p1 z x c, p2 i o p, recarga p1 r, p2 u, ataques de ki: p1 q f v p2 l k j",
-    image: "https://uploads.scratch.mit.edu/projects/thumbnails/1093423657.png",
     likes: 0,
   },
   {
