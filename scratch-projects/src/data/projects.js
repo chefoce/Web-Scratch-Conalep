@@ -103,13 +103,13 @@ const projects = [
     likes: 0,
   },
   {
-    id: "1093209332",
+    id: "1086995948",
     title: "Geometry dash sud zero",
     author: "Edgar Barrón",
-    description: "Mini laberintos sencillos.",
+    description: "Geometry dash",
     instructions:
-      "Dale click para iniciar, selecciona uno de los tres mini laberintos y utiliza las flechas para moverte.",
-    image: "https://uploads.scratch.mit.edu/projects/thumbnails/1093209332.png",
+      "Presiona la barra espaciadora para saltar y esquivar los obstáculos.",
+    image: "https://uploads.scratch.mit.edu/projects/thumbnails/1086995948.png",
     likes: 0,
   },
   {
