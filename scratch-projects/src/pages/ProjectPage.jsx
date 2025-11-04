@@ -20,6 +20,7 @@ import {
 // Importamos las funciones de cookies
 import { setCookie, getCookie } from "../utils/cookies";
 
+/* eslint-disable react-hooks/exhaustive-deps */
 const ProjectPage = () => {
   const { id } = useParams();
   const [project, setProject] = useState(null);

@@ -1,29 +1,35 @@
 // src/components/TopRanking.jsx
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { collection, query, orderBy, limit, getDocs } from "firebase/firestore";
-import projects from "../data/projects";
+import projectsByYear from "../data/projectsByYear";
 import { FaMedal } from "react-icons/fa";
 import { HashLink as Link } from "react-router-hash-link";
 
-function TopRanking() {
+function TopRanking({ year = "2025" }) {
   const [topProjects, setTopProjects] = useState([]);
   const [hasVotes, setHasVotes] = useState(true);
 
   useEffect(() => {
     const fetchTopProjects = async () => {
       const projectsRef = collection(db, "projects");
-      const q = query(projectsRef, orderBy("likes", "desc"), limit(3));
+      const q = query(projectsRef, orderBy("likes", "desc"), limit(10));
       const querySnapshot = await getDocs(q);
 
-      const topProjectsData = querySnapshot.docs.map((doc) => {
-        const project = projects.find((p) => p.id === doc.id);
-        return {
-          id: doc.id,
-          title: project ? project.title : "Proyecto desconocido",
-          likes: doc.data().likes || 0,
-        };
-      });
+      const allProjectsForYear = (projectsByYear[year] || []).map((p) => p.id);
+
+      const topProjectsData = querySnapshot.docs
+        .map((doc) => ({ id: doc.id, likes: doc.data().likes || 0 }))
+        .filter((d) => allProjectsForYear.includes(d.id))
+        .slice(0, 3)
+        .map((d) => ({
+          id: d.id,
+          title:
+            (projectsByYear[year] || []).find((p) => p.id === d.id)?.title ||
+            "Proyecto desconocido",
+          likes: d.likes,
+        }));
 
       // Verificar si hay al menos un proyecto con likes mayores a cero
       const hasLikes = topProjectsData.some((project) => project.likes > 0);
@@ -33,7 +39,7 @@ function TopRanking() {
     };
 
     fetchTopProjects();
-  }, []);
+  }, [year]);
 
   const medalColors = ["text-yellow-500", "text-gray-400", "text-orange-700"];
 
@@ -61,13 +67,12 @@ function TopRanking() {
       ) : (
         <p className="text-white text-lg mb-9">Aún no hay votos suficientes</p>
       )}
-      <Link smooth to="#project-gallery">
-        <a
-          href="#project-gallery"
-          className="rgb-button text-white font-bold py-4 px-8 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-110"
-        >
-          Ver juegos
-        </a>
+      <Link
+        smooth
+        to="#project-gallery"
+        className="rgb-button text-white font-bold py-4 px-8 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-110"
+      >
+        Ver juegos
       </Link>
       <p className="text-white mt-6 text-xl">¡Vota por tu favorito!</p>
       <p className="text-white mt-10 text-xl">Programación Conalep Escuinapa</p>

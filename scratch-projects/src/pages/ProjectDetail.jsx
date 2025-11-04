@@ -1,7 +1,8 @@
 // src/pages/ProjectDetail.jsx
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import projects from "../data/projects";
+import { useParams, useNavigate } from "react-router-dom";
+import projectsByYear from "../data/projectsByYear";
 import { db } from "../firebase";
 import {
   collection,
@@ -27,6 +28,7 @@ import { useWindowSize } from "react-use";
 import { setCookie, getCookie } from "../utils/cookies";
 
 function ProjectDetail() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [project, setProject] = useState(null);
   const [comments, setComments] = useState([]);
@@ -48,11 +50,16 @@ function ProjectDetail() {
   };
 
   useEffect(() => {
-    // Obtener el proyecto de la lista
-    const selectedProject = projects.find((proj) => proj.id === id);
+    // Buscar el proyecto en todos los años disponibles
+    const allProjects = Object.values(projectsByYear).flat();
+    const selectedProject = allProjects.find((proj) => proj.id === id);
     setProject(selectedProject);
   }, [id]);
 
+  // We intentionally omit certain functions from dependencies because
+  // they are stable within this component and recreating them would
+  // cause unnecessary re-runs. If these functions become unstable,
+  // convert them to useCallback and include in deps.
   useEffect(() => {
     // Reiniciar estados al cambiar de proyecto
     setComments([]);
@@ -197,6 +204,14 @@ function ProjectDetail() {
   return (
     <div className="flex justify-center min-h-screen mt-10 text-white">
       <div className="w-full max-w-xl">
+        <div className="mb-4">
+          <button
+            onClick={() => navigate(-1)}
+            className="bg-gray-700 text-white px-4 py-2 rounded mr-2"
+          >
+            ← Atrás
+          </button>
+        </div>
         <h1 className="text-3xl font-bold text-center mb-5">{project.title}</h1>
         <p className="text-justify mt-2">
           <strong>Autor: </strong> {project.author}

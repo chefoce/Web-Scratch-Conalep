@@ -16,7 +16,7 @@ function Carousel() {
   ];
 
   return (
-    <div className="relative" style={{ height: "80vh" }}>
+    <div className="relative" style={{ height: "60vh" }}>
       <Swiper
         modules={[Pagination, A11y, Autoplay]}
         slidesPerView={1}
